@@ -1,0 +1,2281 @@
+/* ==========================================================================
+   SISTEMA DE DISEÑO: DASHBOARD MINIMALISTA & ACOGEDOR (FLAT & SOFT)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TEMA POR DEFECTO / PLAYA RELAJANTE (Turquesa Marino & Brisa Costera)
+   -------------------------------------------------------------------------- */
+:root,
+[data-theme="playa"] {
+  --bg-gradient: linear-gradient(145deg, #0d4659 0%, #166b82 50%, #228f9e 100%);
+  --bg-image: none;
+
+  /* Superficies: Tonalidad agua marina sólida */
+  --surface-card: rgb(218 242 244);
+  --surface-border: rgb(238 250 251);
+  --surface-input: rgb(236 247 249);
+  --surface-input-focus: #ffffff;
+  --surface-item: rgb(202 235 239);
+  --surface-item-hover: rgb(240 252 253);
+  --surface-badge-neutral: rgb(195 228 233);
+
+  /* Paleta cromática marina y viva */
+  --color-primary: #a53f72;
+  --color-primary-hover: #9b235f;
+  --color-accent: #f39c12;
+  --color-coral: #e74c3c;
+  --color-info: #2980b9;
+
+  /* Textos */
+  --text-main: #0b2c34;
+  --text-muted: #3c6b75;
+  --text-on-primary: #ffffff;
+  --text-accent: #744200;
+  --text-info: #0d4e78;
+
+  /* Sombras oceánicas */
+  --shadow-card: 0 10px 30px -5px rgba(8, 52, 64, 0.15), 0 0 0 1px var(--surface-border);
+  --shadow-accent-glow: 0 4px 18px rgba(243, 156, 18, 0.35);
+  --shadow-coral-glow: 0 4px 18px rgba(231, 76, 60, 0.30);
+}
+
+/* --------------------------------------------------------------------------
+   2. TEMA GATO ACOGEDOR (Monocromático Oscuro / Blanco y Negro)
+   -------------------------------------------------------------------------- */
+[data-theme="gato"] {
+  --bg-gradient: linear-gradient(145deg, #09090b 0%, #121215 50%, #1c1c21 100%);
+  --bg-image: none;
+
+  /* Superficies: Flat oscuras monocromáticas sólidas */
+  --surface-card: rgb(18 18 20);
+  --surface-border: rgb(38 38 44);
+  --surface-input: rgb(28 28 32);
+  --surface-input-focus: #000000;
+  --surface-item: rgb(26 26 30);
+  --surface-item-hover: rgb(38 38 44);
+  --surface-badge-neutral: rgb(34 34 40);
+
+  /* Paleta cromática: Blanco, Negro y Escala de Grises Nítida */
+  --color-primary: #ffffff;
+  --color-primary-hover: #e4e4e7;
+  --color-accent: #a1a1aa;
+  --color-coral: #71717a;
+  --color-info: #d4d4d8;
+
+  /* Textos */
+  --text-main: #fafafa;
+  --text-muted: #8b8b94;
+  --text-on-primary: #09090b;
+  --text-accent: #ffffff;
+  --text-info: #f4f4f5;
+
+  /* Sombras oscuras discretas */
+  --shadow-card: 0 12px 36px -6px rgba(0, 0, 0, 0.65), 0 0 0 1px var(--surface-border);
+  --shadow-accent-glow: 0 4px 16px rgba(255, 255, 255, 0.15);
+  --shadow-coral-glow: 0 4px 16px rgba(160, 160, 160, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   3. TEMA CAMPING NOCTURNO (Naturaleza Cálida Nocturna / Fogata & Musgo)
+   -------------------------------------------------------------------------- */
+[data-theme="camping"] {
+  --bg-gradient: linear-gradient(145deg, #091910 0%, #0e271a 50%, #173626 100%);
+  --bg-image: none;
+
+  /* Superficies: Verde musgo profundo sólido con calidez */
+  --surface-card: rgb(14 28 20);
+  --surface-border: rgb(28 50 36);
+  --surface-input: rgb(20 38 28);
+  --surface-input-focus: rgb(24 46 34);
+  --surface-item: rgb(22 42 30);
+  --surface-item-hover: rgb(30 56 40);
+  --surface-badge-neutral: rgb(26 48 35);
+
+  /* Paleta cálida de fogata sobre bosque nocturno */
+  --color-primary: #e69138;
+  --color-primary-hover: #cf7e27;
+  --color-accent: #f5b041;
+  --color-coral: #e76f51;
+  --color-info: #7ecba1;
+
+  /* Textos */
+  --text-main: #fdfbf7;
+  --text-muted: #a3bba9;
+  --text-on-primary: #1a150e;
+  --text-accent: #fef3c7;
+  --text-info: #b4e8cb;
+
+  /* Sombras */
+  --shadow-card: 0 12px 36px -6px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--surface-border);
+  --shadow-accent-glow: 0 4px 20px rgba(245, 176, 65, 0.35);
+  --shadow-coral-glow: 0 4px 20px rgba(231, 111, 81, 0.30);
+}
+
+/* --------------------------------------------------------------------------
+   4. TEMA CAFÉ CÁLIDO (Caramelo Tostado, Canela & Crema Moka)
+   -------------------------------------------------------------------------- */
+[data-theme="cafe"] {
+  --bg-gradient: linear-gradient(145deg, #2c1206 0%, #4a210d 50%, #6e3518 100%);
+  --bg-image: none;
+
+  /* Superficies: Galleta tostada / crema de caramelo sólida */
+  --surface-card: rgb(244 226 206);
+  --surface-border: rgb(255 228 209);
+  --surface-input: rgb(248 238 227);
+  --surface-input-focus: #fdf5eb;
+  --surface-item: rgb(254 236 219);
+  --surface-item-hover: rgb(253 243 230);
+  --surface-badge-neutral: rgb(245 217 195);
+
+  /* Paleta café y caramelo con carácter */
+  --color-primary: #b8541a;
+  --color-primary-hover: #994110;
+  --color-accent: #db7c1e;
+  --color-coral: #c73e28;
+  --color-info: #7a4422;
+
+  /* Textos */
+  --text-main: #2d1407;
+  --text-muted: #6d4830;
+  --text-on-primary: #ffffff;
+  --text-accent: #522103;
+  --text-info: #5e2b0c;
+
+  /* Sombras cálidas de café tostado */
+  --shadow-card: 0 10px 30px -5px rgba(45, 20, 5, 0.14), 0 0 0 1px var(--surface-border);
+  --shadow-accent-glow: 0 4px 20px rgba(219, 124, 30, 0.38);
+  --shadow-coral-glow: 0 4px 20px rgba(199, 62, 40, 0.32);
+}
+
+/* ==========================================================================
+   RESET Y BASE
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg-gradient);
+  background-image: var(--bg-image);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: color 0.35s ease, background 0.35s ease;
+  line-height: 1.5;
+}
+
+/* Iconos de Material Symbols */
+.material-symbols-rounded {
+  font-family: 'Material Symbols Rounded';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Enlace de Salto para Teclado (WCAG 2.4.1) */
+.skip-link {
+  position: fixed;
+  top: -120px;
+  left: 24px;
+  background: var(--color-primary);
+  color: var(--text-on-primary);
+  padding: 10px 18px;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  z-index: 10000;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: top 0.25s ease;
+}
+
+.skip-link:focus {
+  top: 24px;
+  outline: 3px solid var(--text-on-primary);
+  outline-offset: 2px;
+}
+
+/* Foco Visible y Accesible (WCAG 2.4.7 / 1.4.11) */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+.cal-day-cell:focus-visible {
+  outline: 2.5px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   CAPA DE FONDO DINÁMICO (VÍDEO / IMAGEN) CON TRANSICIÓN SUAVE
+   ========================================================================== */
+.bg-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  overflow: hidden;
+  background: var(--bg-gradient);
+  transition: background 0.8s ease-in-out;
+}
+
+.bg-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.85s ease-in-out;
+  z-index: 1;
+}
+
+.bg-layer.is-active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.bg-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+.bg-media.is-visible {
+  display: block;
+}
+
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 16, 20, 0.30);
+  z-index: 5;
+  pointer-events: none;
+  backdrop-filter: saturate(110%);
+  -webkit-backdrop-filter: saturate(110%);
+  transition: background 0.5s ease;
+}
+
+[data-theme="gato"] .bg-overlay {
+  background: rgba(5, 5, 7, 0.45);
+}
+
+[data-theme="camping"] .bg-overlay {
+  background: rgba(5, 14, 10, 0.38);
+}
+
+/* ==========================================================================
+   ENCABEZADO FLOTANTE SUPERIOR
+   ========================================================================== */
+.app-header {
+  width: 100%;
+  margin: 0 auto 22px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Dock de Ventanas Minimizadas (Esquina Superior Izquierda) */
+.minimized-dock {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.minimized-chips-list {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.minimized-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  background: var(--surface-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--surface-border);
+  border-radius: 9999px;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.3s ease, border-color 0.25s ease, color 0.3s ease;
+}
+
+.minimized-chip:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+.minimized-chip:active {
+  transform: translateY(0);
+}
+
+.minimized-chip-icon {
+  color: var(--color-primary);
+  font-size: 18px;
+  line-height: 1;
+  transition: color 0.3s ease;
+}
+
+.btn-restore-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--surface-badge-neutral);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--surface-border);
+  border-radius: 9999px;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: all 0.2s ease;
+}
+
+.btn-restore-all:hover {
+  color: var(--text-main);
+  background: var(--surface-item-hover);
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.btn-restore-all .restore-all-icon {
+  font-size: 16px;
+  color: var(--color-primary);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+/* Botón de Acceso a Métricas en Cabecera */
+.header-metrics-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  background: var(--surface-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--surface-border);
+  border-radius: 9999px;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.3s ease, border-color 0.25s ease;
+}
+
+.header-metrics-btn:hover {
+  transform: translateY(-1px);
+  background: var(--surface-item-hover);
+  border-color: var(--color-primary);
+}
+
+.header-metrics-btn:active {
+  transform: translateY(0);
+}
+
+.pill-metrics-icon {
+  font-size: 17px;
+  color: var(--color-primary);
+  transition: color 0.3s ease;
+}
+
+.header-metrics-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: color-mix(in srgb, var(--color-primary) 14%, transparent);
+  border-radius: 9999px;
+  color: var(--color-primary);
+}
+
+.bg-select {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  padding-right: 4px;
+  transition: color 0.3s ease;
+}
+
+.bg-select option {
+  background: var(--surface-card);
+  color: var(--text-main);
+  padding: 8px;
+}
+
+[data-theme="gato"] .bg-select option {
+  background: #141416;
+  color: #fafafa;
+}
+
+[data-theme="camping"] .bg-select option {
+  background: #0e2417;
+  color: #fdfbf7;
+}
+
+[data-theme="cafe"] .bg-select option {
+  background: #ecd4bd;
+  color: #2d1407;
+}
+
+[data-theme="playa"] .bg-select option {
+  background: #c7ebef;
+  color: #0b2c34;
+}
+
+/* Píldora de Fecha Flat */
+.header-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  background: var(--surface-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--surface-border);
+  border-radius: 9999px;
+  color: var(--text-main);
+  font-size: 0.82rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-card);
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pill-calendar-icon {
+  font-size: 16px;
+  color: var(--color-primary);
+  transition: color 0.3s ease;
+}
+
+/* ==========================================================================
+   LAYOUT FLOTANTE PERIMETRAL
+   ========================================================================== */
+.floating-dashboard {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 360px 1fr 420px;
+  grid-template-rows: 1fr auto;
+  gap: 22px;
+  align-items: start;
+  flex: 1;
+}
+
+.floating-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ambient-center-space {
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* ==========================================================================
+   TARJETA FLOTANTE (ESTILO FLAT, ACOGEDOR Y MINIMALISTA)
+   ========================================================================== */
+.floating-card {
+  background: var(--surface-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--surface-border);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: var(--text-main);
+}
+
+.floating-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.12), 0 0 0 1px var(--surface-border);
+}
+
+[data-theme="gato"] .floating-card:hover {
+  box-shadow: 0 16px 40px -6px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--surface-border);
+}
+
+/* Encabezados de Tarjetas */
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.card-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-title-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.icon-primary {
+  background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  color: var(--color-primary);
+}
+
+.icon-secondary,
+.icon-info,
+.icon-cyan {
+  background: color-mix(in srgb, var(--color-info) 12%, transparent);
+  color: var(--color-info);
+}
+
+.icon-accent {
+  background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+  color: var(--text-accent);
+}
+
+.icon-coral {
+  background: color-mix(in srgb, var(--color-coral) 12%, transparent);
+  color: var(--color-coral);
+}
+
+.card-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.015em;
+  transition: color 0.3s ease;
+}
+
+/* Badges de Estado Flat */
+.card-badge {
+  font-size: 0.70rem;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  background: var(--surface-badge-neutral);
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.badge-primary {
+  background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  color: var(--color-primary);
+}
+
+.badge-secondary,
+.badge-info {
+  background: color-mix(in srgb, var(--color-info) 14%, transparent);
+  color: var(--text-info);
+}
+
+.badge-accent {
+  background: color-mix(in srgb, var(--color-accent) 16%, transparent);
+  color: var(--text-accent);
+}
+
+.badge-coral {
+  background: color-mix(in srgb, var(--color-coral) 12%, transparent);
+  color: var(--color-coral);
+}
+
+/* Acciones de Encabezado de Tarjeta y Botón de Minimizar */
+.card-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-card-minimize {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-card-minimize:hover {
+  color: var(--text-main);
+  background: var(--surface-item-hover);
+  border-color: var(--surface-border);
+  transform: translateY(-1px);
+}
+
+.btn-card-minimize:active {
+  transform: translateY(0);
+}
+
+.btn-card-minimize .material-symbols-rounded {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Estado de Tarjeta Minimizada */
+.floating-card.is-minimized {
+  display: none !important;
+}
+
+/* ==========================================================================
+   TARJETA 1: RACHA DE ESTUDIO COMPACTA Y CALENDARIO MENSUAL
+   ========================================================================== */
+
+/* Bloque Superior Compacto de Racha */
+.streak-compact-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.streak-mini-badge-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.streak-flame-mini {
+  font-size: 26px;
+  line-height: 1;
+  color: var(--color-accent);
+  transition: transform 0.25s ease, color 0.3s ease;
+}
+
+.card-streak:hover .streak-flame-mini {
+  transform: scale(1.12) rotate(-3deg);
+}
+
+.streak-mini-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.streak-mini-count-line {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.streak-mini-number {
+  font-size: 1.40rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.streak-mini-label {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Fila de Mini Píldoras de Estadísticas Flat */
+.streak-stats-mini-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.streak-stat-mini-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--surface-badge-neutral);
+  padding: 4px 7px;
+  border-radius: 7px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.15s ease;
+  cursor: default;
+}
+
+.streak-stat-mini-pill:hover {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--surface-item-hover) 80%, transparent);
+}
+
+.stat-mini-icon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.val-primary {
+  color: var(--color-primary);
+}
+
+.val-secondary,
+.val-info,
+.val-cyan {
+  color: var(--color-info);
+}
+
+/* ==========================================================================
+   CALENDARIO MENSUAL INTEGRADO (MINIMALISTA)
+   ========================================================================== */
+.streak-calendar-wrapper {
+  background: var(--surface-item);
+  border-radius: 14px;
+  padding: 10px 8px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: background 0.3s ease;
+  position: relative;
+}
+
+/* Barra de Navegación del Calendario */
+.calendar-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+
+.cal-month-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cal-month-title {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+  text-transform: capitalize;
+}
+
+.btn-cal-today {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  min-height: 26px;
+  border-radius: 6px;
+  background: var(--surface-badge-neutral);
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1.2;
+}
+
+.btn-cal-today:hover {
+  background: color-mix(in srgb, var(--color-primary) 15%, transparent);
+  color: var(--color-primary);
+}
+
+.btn-cal-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  border-radius: 7px;
+  background: var(--surface-badge-neutral);
+  border: none;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cal-nav span {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.btn-cal-nav:hover {
+  background: color-mix(in srgb, var(--color-primary) 15%, transparent);
+  color: var(--color-primary);
+  transform: scale(1.06);
+}
+
+.btn-cal-nav:active {
+  transform: scale(0.95);
+}
+
+/* Cabecera de Días de la Semana */
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+  text-align: center;
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 4px 0 2px 0;
+  opacity: 0.8;
+}
+
+/* Cuadrícula de Días */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+  text-align: center;
+}
+
+/* Celdas de Días */
+.cal-day-cell {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.76rem;
+  font-weight: 600;
+  border-radius: 50%;
+  color: var(--text-main);
+  position: relative;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.cal-day-cell.empty {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cal-day-cell.other-month {
+  color: color-mix(in srgb, var(--text-muted) 40%, transparent);
+  opacity: 0.4;
+}
+
+/* Día de hoy */
+.cal-day-cell.is-today {
+  box-shadow: inset 0 0 0 1.5px var(--color-primary);
+  font-weight: 700;
+}
+
+/* Día estudiado con círculo resaltado flat */
+.cal-day-cell.has-study {
+  background: var(--color-primary);
+  color: var(--text-on-primary);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cal-day-cell.has-study:hover {
+  transform: scale(1.18);
+  box-shadow: var(--shadow-accent-glow);
+  z-index: 5;
+}
+
+/* Tooltip Detallado Flotante Flat */
+.cal-tooltip {
+  position: absolute;
+  z-index: 100;
+  background: var(--surface-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--surface-border);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+  border-radius: 12px;
+  padding: 10px 12px;
+  min-width: 170px;
+  max-width: 240px;
+  font-size: 0.74rem;
+  color: var(--text-main);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  line-height: 1.4;
+}
+
+.cal-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cal-tooltip-header {
+  font-weight: 700;
+  font-size: 0.76rem;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid color-mix(in srgb, var(--text-muted) 15%, transparent);
+}
+
+.cal-tooltip-total {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-main);
+}
+
+.cal-tooltip-total .material-symbols-rounded {
+  font-size: 14px;
+  color: var(--color-accent);
+}
+
+.cal-tooltip-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cal-tooltip-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-muted);
+  gap: 6px;
+}
+
+.cal-tooltip-topic {
+  font-weight: 600;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 130px;
+}
+
+.cal-tooltip-time {
+  font-weight: 700;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   TARJETA 2: TEMPORIZADOR DE ENFOQUE & POMODORO (MINIMALISTA)
+   ========================================================================== */
+.card-timer {
+  display: flex;
+  flex-direction: column;
+}
+
+.timer-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Selector de Modos Flat (Píldoras) */
+.timer-mode-selector {
+  display: flex;
+  background: var(--surface-item);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 3px;
+}
+
+.timer-mode-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 6px 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.mode-btn-icon {
+  font-size: 15px;
+}
+
+.timer-mode-btn:hover {
+  color: var(--text-main);
+}
+
+.timer-mode-btn.active {
+  background: var(--surface-card);
+  color: var(--color-primary);
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="gato"] .timer-mode-btn.active {
+  background: rgba(45, 45, 50, 0.95);
+  color: #ffffff;
+}
+
+/* Configuración de Minutos Personalizados */
+.timer-custom-config {
+  background: var(--surface-item);
+  border-radius: 10px;
+  padding: 10px 12px;
+  animation: timerFadeIn 0.25s ease-out;
+}
+
+.custom-inputs-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.custom-input-group {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+}
+
+.custom-label {
+  font-size: 0.70rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.custom-input {
+  padding: 6px 8px;
+  font-size: 0.84rem;
+  border-radius: 8px;
+}
+
+/* Campo de Materia integrado en Temporizador Flat */
+.timer-topic-wrapper {
+  width: 100%;
+}
+
+.timer-topic-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--surface-input);
+  border-radius: 10px;
+  padding: 0 12px;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.timer-topic-field:focus-within {
+  background: var(--surface-input-focus);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+.timer-topic-icon {
+  color: var(--text-muted);
+  font-size: 17px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.timer-topic-input {
+  width: 100%;
+  padding: 8px 0;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  outline: none;
+}
+
+.timer-topic-input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.75;
+}
+
+/* Display de Tiempo con Anillo de Progreso Circular Flat */
+.timer-display-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.timer-progress-ring-wrapper {
+  position: relative;
+  width: 154px;
+  height: 154px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-progress-ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.timer-ring-bg {
+  stroke: color-mix(in srgb, var(--text-muted) 16%, transparent);
+  stroke-width: 6;
+  fill: transparent;
+}
+
+.timer-ring-bar {
+  stroke: var(--color-primary);
+  stroke-width: 6;
+  stroke-linecap: round;
+  fill: transparent;
+  stroke-dasharray: 439.82;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.4s linear, stroke 0.3s ease;
+}
+
+.card-timer.phase-break .timer-ring-bar {
+  stroke: var(--color-accent);
+}
+
+.timer-display-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+
+.timer-phase-label {
+  font-size: 0.70rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.timer-digits {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-main);
+  line-height: 1.1;
+  margin: 1px 0 2px 0;
+  transition: color 0.3s ease;
+}
+
+.timer-cycle-indicator {
+  font-size: 0.70rem;
+  font-weight: 600;
+  color: var(--color-info);
+  transition: color 0.3s ease;
+}
+
+/* Fila de Acciones Flat */
+.timer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-timer-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--surface-item);
+  border: none;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease, color 0.2s ease;
+}
+
+.btn-timer-icon:hover {
+  background: var(--surface-item-hover);
+  color: var(--color-primary);
+  transform: scale(1.06);
+}
+
+.btn-timer-main {
+  min-width: 125px;
+  height: 40px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+.btn-timer-main-icon {
+  font-size: 19px;
+}
+
+/* Alerta de Finalización Flat */
+.timer-finish-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--color-primary) 15%, transparent);
+  color: var(--text-main);
+  font-size: 0.78rem;
+  font-weight: 600;
+  animation: timerBounceIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.timer-finish-alert .alert-icon {
+  color: var(--color-primary);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* Animación de Parpadeo / Alarma */
+.card-timer.alarm-active {
+  animation: timerGlowPulse 1.2s infinite ease-in-out;
+}
+
+@keyframes timerGlowPulse {
+
+  0%,
+  100% {
+    box-shadow: var(--shadow-card);
+  }
+
+  50% {
+    box-shadow: 0 0 24px color-mix(in srgb, var(--color-primary) 50%, transparent);
+  }
+}
+
+@keyframes timerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes timerBounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ==========================================================================
+   TARJETA 3: FORMULARIO DE REGISTRO DE SESIÓN (FLAT & MINIMALISTA)
+   ========================================================================== */
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.form-error-msg {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-coral) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-coral) 40%, transparent);
+  color: var(--color-coral);
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-row-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.3s ease;
+}
+
+.label-icon {
+  font-size: 15px;
+  color: var(--color-primary);
+  transition: color 0.3s ease;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 0.86rem;
+  font-family: inherit;
+  background: var(--surface-input);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: var(--text-main);
+  outline: none;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus {
+  background: var(--surface-input-focus);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+.form-input[aria-invalid="true"] {
+  border-color: var(--color-coral);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-coral) 30%, transparent);
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* Botones Flat */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  border-radius: 9999px;
+  padding: 10px 20px;
+  transition: transform 0.2s ease, background 0.25s ease, opacity 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--text-on-primary);
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   TARJETA 4: HISTORIAL DE SESIONES (FLAT)
+   ========================================================================== */
+.history-list-wrapper {
+  flex: 1;
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.history-list-wrapper::-webkit-scrollbar {
+  width: 5px;
+}
+
+.history-list-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.history-list-wrapper::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--text-muted) 20%, transparent);
+  border-radius: 10px;
+}
+
+.history-list-wrapper::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--text-muted) 40%, transparent);
+}
+
+.history-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  background: var(--surface-item);
+  border-radius: 10px;
+  transition: transform 0.18s ease, background 0.2s ease;
+}
+
+.history-item:hover {
+  background: var(--surface-item-hover);
+  transform: translateX(2px);
+}
+
+.history-item-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.history-item-topic {
+  font-weight: 700;
+  font-size: 0.86rem;
+  color: var(--text-main);
+  transition: color 0.3s ease;
+}
+
+.history-item-meta {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.history-item-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.history-item-minutes {
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  padding: 2px 8px;
+  border-radius: 9999px;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+.btn-delete-session {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px;
+  min-width: 28px;
+  min-height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+  opacity: 0.75;
+}
+
+.btn-delete-session:hover {
+  color: var(--color-coral);
+  background: color-mix(in srgb, var(--color-coral) 12%, transparent);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.history-empty {
+  text-align: center;
+  padding: 26px 14px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  transition: color 0.3s ease;
+}
+
+.history-empty-icon {
+  font-size: 2rem;
+  margin-bottom: 6px;
+  color: var(--color-primary);
+  opacity: 0.7;
+  transition: color 0.3s ease;
+}
+
+/* ==========================================================================
+   RELOJ CENTRAL FLIP CLOCK (ESTILO FLIQLO)
+   ========================================================================== */
+.flip-clock-wrapper {
+  animation: flipClockFadeIn 0.4s ease-out forwards;
+}
+
+@keyframes flipClockFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.flip-clock {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+}
+
+.flip-card-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.flip-card-tile {
+  background: var(--surface-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--surface-border);
+  border-radius: 18px;
+  min-width: 96px;
+  height: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.flip-tile-sec {
+  min-width: 74px;
+  height: 82px;
+  border-radius: 14px;
+}
+
+.flip-card-digit {
+  font-size: 3.4rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease;
+  z-index: 1;
+}
+
+.flip-digit-sec {
+  font-size: 2.3rem;
+  opacity: 0.85;
+}
+
+.flip-card-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: color-mix(in srgb, var(--surface-border) 80%, rgba(0, 0, 0, 0.2));
+  z-index: 2;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.flip-clock-dots {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 24px;
+  opacity: 0.8;
+  line-height: 1;
+  transition: color 0.3s ease;
+}
+
+/* ==========================================================================
+   TARJETA DE CONFIGURACIÓN Y SWITCHES
+   ========================================================================== */
+.card-settings .settings-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--surface-item);
+  border: 1px solid var(--surface-border);
+  border-radius: 14px;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.settings-item:hover {
+  background: var(--surface-item-hover);
+}
+
+.settings-item.is-placeholder {
+  opacity: 0.65;
+}
+
+.settings-item-label-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.settings-item-icon {
+  font-size: 20px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  transition: color 0.3s ease;
+}
+
+.settings-item-title {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.25;
+  transition: color 0.3s ease;
+}
+
+.settings-item-subtitle {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+  margin-top: 1px;
+  transition: color 0.3s ease;
+}
+
+.settings-select-wrapper {
+  flex-shrink: 0;
+}
+
+.settings-select-wrapper .bg-select {
+  padding: 6px 10px;
+  background: var(--surface-input);
+  border: 1px solid var(--surface-border);
+  border-radius: 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  outline: none;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.3s ease;
+}
+
+.settings-select-wrapper .bg-select:focus-visible {
+  outline: 2.5px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+/* Switch Estilizado Accesible (role="switch") */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: color-mix(in srgb, var(--surface-border) 70%, var(--text-muted) 30%);
+  border-radius: 9999px;
+  transition: background 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease;
+}
+
+.toggle-slider::before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="gato"] .toggle-slider::before {
+  background: #ffffff;
+}
+
+.toggle-switch input:checked+.toggle-slider {
+  background: var(--color-primary);
+}
+
+.toggle-switch input:checked+.toggle-slider::before {
+  transform: translateX(20px);
+  background: var(--text-on-primary);
+}
+
+.toggle-switch input:focus-visible+.toggle-slider {
+  outline: 2.5px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.toggle-switch.is-disabled {
+  cursor: not-allowed;
+}
+
+.toggle-switch.is-disabled input,
+.toggle-switch.is-disabled .toggle-slider {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ==========================================================================
+   MODAL / POPUP DE MÉTRICAS (FASE 4)
+   ========================================================================== */
+.metrics-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.metrics-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 12, 16, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.metrics-modal-card {
+  position: relative;
+  z-index: 1;
+  width: min(92vw, 1060px);
+  max-height: 88vh;
+  overflow-y: auto;
+  border-radius: 24px;
+  padding: 28px 32px;
+  box-shadow: 0 24px 60px -10px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--surface-border);
+  animation: modalPopUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPopUp {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.metrics-modal-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.metrics-modal-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.btn-modal-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--surface-border);
+  background: var(--surface-item);
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-modal-close:hover {
+  background: var(--surface-item-hover);
+  color: var(--text-main);
+  transform: scale(1.05);
+}
+
+.btn-modal-close:active {
+  transform: scale(0.95);
+}
+
+.metrics-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.metrics-preview-card {
+  background: var(--surface-item);
+  border: 1px solid var(--surface-border);
+  border-radius: 18px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.metrics-preview-card:hover {
+  transform: translateY(-2px);
+  background: var(--surface-item-hover);
+}
+
+.metrics-preview-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.metrics-preview-heading {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.metrics-preview-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+
+/* Mockup Heatmap */
+.heatmap-mock-cells {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  padding: 10px;
+  background: var(--surface-card);
+  border-radius: 12px;
+  border: 1px solid var(--surface-border);
+}
+
+.hm-c {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  background: var(--surface-item);
+}
+
+.hm-c.lvl-0 {
+  background: color-mix(in srgb, var(--surface-border) 40%, transparent);
+}
+
+.hm-c.lvl-1 {
+  background: color-mix(in srgb, var(--color-cyan) 30%, transparent);
+}
+
+.hm-c.lvl-2 {
+  background: color-mix(in srgb, var(--color-cyan) 60%, transparent);
+}
+
+.hm-c.lvl-3 {
+  background: var(--color-cyan);
+}
+
+.hm-c.lvl-4 {
+  background: color-mix(in srgb, var(--color-cyan) 85%, #ffffff);
+}
+
+/* Mockup Barras */
+.metrics-mockup-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  background: var(--surface-card);
+  border-radius: 12px;
+  border: 1px solid var(--surface-border);
+}
+
+.mock-bar-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.mock-bar-line .m-label {
+  width: 95px;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mock-bar-line .m-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--surface-item);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.mock-bar-line .m-fill {
+  height: 100%;
+  border-radius: 9999px;
+}
+
+.m-fill.f-1 {
+  background: var(--color-primary);
+}
+
+.m-fill.f-2 {
+  background: var(--color-accent);
+}
+
+.m-fill.f-3 {
+  background: var(--color-info);
+}
+
+.mock-bar-line .m-val {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+  width: 32px;
+  text-align: right;
+}
+
+/* Mockup Summary Stats */
+.metrics-stats-mini-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.summary-box {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: 12px;
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.summary-box .sb-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+
+.summary-box .sb-val {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   TOAST DE RECORDATORIO DE AGUA
+   ========================================================================== */
+.water-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9990;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 12px 20px;
+  background: var(--surface-card);
+  border: 1.5px solid var(--color-info);
+  border-radius: 9999px;
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  animation: toastSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes toastSlideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.water-toast-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.water-toast-icon {
+  font-size: 24px;
+  color: var(--color-info);
+  animation: waterDropPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes waterDropPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+.water-toast-text strong {
+  display: block;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.water-toast-text p {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  line-height: 1.2;
+  margin-top: 1px;
+}
+
+.btn-water-toast-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--color-info);
+  color: var(--text-on-primary);
+  border: none;
+  border-radius: 9999px;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.btn-water-toast-close:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+.btn-water-toast-close:active {
+  transform: scale(0.97);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 1180px) {
+  .floating-dashboard {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ambient-center-space {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 14px;
+  }
+
+  .floating-dashboard {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 14px;
+  }
+
+  .form-row-duo {
+    grid-template-columns: 1fr;
+  }
+
+  .placeholder-body.compact {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .minimized-dock {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .header-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* ==========================================================================
+   PREFERENCIAS DE ACCESIBILIDAD: REDUCCIÓN DE MOVIMIENTO (WCAG 2.3.3)
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .bg-layer {
+    transition: none !important;
+  }
+
+  .card-timer.alarm-active {
+    animation: none !important;
+    box-shadow: 0 0 14px var(--color-primary) !important;
+  }
+}

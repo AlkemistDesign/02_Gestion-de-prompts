@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Dashboard de Control de Estudio con tarjetas flotantes perimetrales, fondos dinámicos inmersivos, gestión de racha y registro de sesiones.">
+  <title>Dashboard de Estudio</title>
+  <!-- Tipografía Google Fonts y Material Symbols Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Enlace de Salto para Navegación Accesible por Teclado (WCAG 2.4.1) -->
+  <a href="#main-dashboard" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Capa de Fondo Dinámico (Vídeo / Imagen) con Doble Capa para Transición Suave (Crossfade) -->
+  <div id="bg-container" class="bg-container" aria-hidden="true">
+    <div id="bg-layer-a" class="bg-layer is-active">
+      <video class="bg-media bg-media-video" autoplay loop muted playsinline></video>
+      <img class="bg-media bg-media-img" alt="" role="presentation">
+    </div>
+    <div id="bg-layer-b" class="bg-layer">
+      <video class="bg-media bg-media-video" autoplay loop muted playsinline></video>
+      <img class="bg-media bg-media-img" alt="" role="presentation">
+    </div>
+    <div class="bg-overlay"></div>
+  </div>
+
+  <!-- Encabezado Flotante Superior -->
+  <header class="app-header">
+    <!-- Título Principal Semántico H1 (WCAG 1.3.1) -->
+    <h1 class="sr-only">Dashboard de Control de Estudio</h1>
+
+    <!-- Dock de Ventanas Minimizadas (Esquina Superior Izquierda) -->
+    <div class="minimized-dock" id="minimized-dock" aria-label="Ventanas minimizadas" style="display: none;">
+      <div class="minimized-chips-list" id="minimized-chips-list" role="region"
+        aria-label="Lista de ventanas minimizadas">
+        <!-- Renderizado dinámico desde app.js -->
+      </div>
+      <button type="button" class="btn-restore-all" id="btn-restore-all" title="Abrir todas las ventanas minimizadas"
+        aria-label="Abrir todas las ventanas minimizadas">
+        <span class="material-symbols-rounded restore-all-icon" aria-hidden="true">unfold_more</span>
+        <span>Abrir todas</span>
+      </button>
+    </div>
+
+    <!-- Controles de Cabecera: Acceso a Métricas y Fecha -->
+    <div class="header-controls">
+      <button type="button" class="header-metrics-btn" id="btn-open-metrics"
+        title="Ver métricas y calendario de actividad" aria-label="Abrir panel de Métricas y Actividad">
+        <span class="material-symbols-rounded pill-metrics-icon" aria-hidden="true">analytics</span>
+        <span>Métricas</span>
+        <span class="header-metrics-badge">Fase 4</span>
+      </button>
+
+      <div class="header-status-pill" aria-label="Fecha actual">
+        <span class="material-symbols-rounded pill-calendar-icon" aria-hidden="true">calendar_today</span>
+        <span id="header-today-date">Cargando fecha...</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Espacio Principal: Distribución Flotante Perimetral -->
+  <main class="floating-dashboard" id="main-dashboard" tabindex="-1">
+    <!-- Columna Lateral Izquierda (Racha & Temporizador) -->
+    <aside class="floating-column col-left" aria-label="Racha y temporizador">
+      <!-- 1. Tarjeta Racha & Resumen con Calendario Mensual -->
+      <section class="floating-card card-streak" id="card-streak" aria-labelledby="title-streak">
+        <h2 class="sr-only" id="title-streak">Racha de Estudio y Calendario Mensual</h2>
+
+        <!-- Fila compacta de racha y estadísticas con botón de minimizar -->
+        <div class="streak-compact-hero">
+          <div class="streak-mini-badge-box">
+            <span class="material-symbols-rounded streak-flame-mini" id="streak-icon"
+              aria-hidden="true">local_fire_department</span>
+            <div class="streak-mini-info">
+              <div class="streak-mini-count-line">
+                <span class="streak-mini-number" id="streak-count">0</span>
+                <span class="streak-mini-label" id="streak-label">días</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="streak-stats-mini-row" role="region" aria-label="Estadísticas de estudio">
+            <div class="streak-stat-mini-pill" title="Minutos estudiados hoy" aria-label="Minutos estudiados hoy">
+              <span class="material-symbols-rounded stat-mini-icon val-primary" aria-hidden="true">today</span>
+              <span class="stat-mini-val val-primary" id="stat-today-minutes">0 min</span>
+            </div>
+            <div class="streak-stat-mini-pill" title="Total de sesiones" aria-label="Total de sesiones realizadas">
+              <span class="material-symbols-rounded stat-mini-icon val-secondary"
+                aria-hidden="true">format_list_bulleted</span>
+              <span class="stat-mini-val val-secondary" id="stat-total-sessions">0</span>
+            </div>
+            <div class="streak-stat-mini-pill" title="Horas acumuladas" aria-label="Total de horas acumuladas">
+              <span class="material-symbols-rounded stat-mini-icon val-cyan" aria-hidden="true">hourglass_bottom</span>
+              <span class="stat-mini-val val-cyan" id="stat-total-hours">0 h</span>
+            </div>
+          </div>
+
+          <button type="button" class="btn-card-minimize" data-card="card-streak" title="Minimizar Racha y Calendario"
+            aria-label="Minimizar Racha y Calendario">
+            <span class="material-symbols-rounded" aria-hidden="true">remove</span>
+          </button>
+        </div>
+
+        <!-- Calendario Mensual Integrado -->
+        <div class="streak-calendar-wrapper" aria-label="Calendario interactivo de sesiones">
+          <div class="calendar-nav-bar">
+            <button type="button" class="btn-cal-nav" id="btn-cal-prev" aria-label="Mes anterior" title="Mes anterior">
+              <span class="material-symbols-rounded" aria-hidden="true">chevron_left</span>
+            </button>
+            <div class="cal-month-title-wrapper">
+              <span class="cal-month-title" id="cal-month-title">Mes Año</span>
+              <button type="button" class="btn-cal-today" id="btn-cal-today" title="Volver al mes actual"
+                aria-label="Volver al mes actual">Hoy</button>
+            </div>
+            <button type="button" class="btn-cal-nav" id="btn-cal-next" aria-label="Mes siguiente"
+              title="Mes siguiente">
+              <span class="material-symbols-rounded" aria-hidden="true">chevron_right</span>
+            </button>
+          </div>
+
+          <div class="calendar-weekdays" aria-hidden="true">
+            <span>L</span>
+            <span>M</span>
+            <span>X</span>
+            <span>J</span>
+            <span>V</span>
+            <span>S</span>
+            <span>D</span>
+          </div>
+
+          <div class="calendar-grid" id="calendar-grid" role="region" aria-label="Días del mes con actividad">
+            <!-- Renderizado dinámico desde app.js -->
+          </div>
+        </div>
+
+        <!-- Tooltip flotante para mostrar materias y minutos -->
+        <div id="cal-tooltip" class="cal-tooltip" role="tooltip" aria-hidden="true"></div>
+      </section>
+
+      <!-- 2. Tarjeta: Temporizador de Enfoque & Pomodoro -->
+      <section class="floating-card card-timer" id="card-timer" aria-labelledby="title-timer">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-title-icon icon-secondary" aria-hidden="true">
+              <span class="material-symbols-rounded">timer</span>
+            </span>
+            <h2 class="card-title" id="title-timer">Temporizador de Enfoque</h2>
+          </div>
+          <div class="card-header-actions">
+            <span class="card-badge badge-secondary" id="timer-badge" aria-live="polite">Listo</span>
+            <button type="button" class="btn-card-minimize" data-card="card-timer"
+              title="Minimizar Temporizador de Enfoque" aria-label="Minimizar Temporizador de Enfoque">
+              <span class="material-symbols-rounded" aria-hidden="true">remove</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="timer-body">
+          <!-- Selector de Modo / Píldoras -->
+          <div class="timer-mode-selector" role="tablist" aria-label="Modos de temporizador">
+            <button type="button" class="timer-mode-btn active" data-mode="pomodoro" role="tab" aria-selected="true"
+              id="tab-pomodoro" aria-controls="timer-display-container">
+              <span class="material-symbols-rounded mode-btn-icon" aria-hidden="true">nest_clock_farsight_analog</span>
+              <span>25/5 min</span>
+            </button>
+            <button type="button" class="timer-mode-btn" data-mode="deep" role="tab" aria-selected="false" id="tab-deep"
+              aria-controls="timer-display-container">
+              <span class="material-symbols-rounded mode-btn-icon" aria-hidden="true">bolt</span>
+              <span>50/10 min</span>
+            </button>
+            <button type="button" class="timer-mode-btn" data-mode="custom" role="tab" aria-selected="false"
+              id="tab-custom" aria-controls="timer-custom-config">
+              <span class="material-symbols-rounded mode-btn-icon" aria-hidden="true">tune</span>
+              <span>Personalizado</span>
+            </button>
+          </div>
+
+          <!-- Selector de Minutos Personalizados (Visible en modo personalizado) -->
+          <div class="timer-custom-config" id="timer-custom-config" role="region"
+            aria-label="Ajuste de tiempos personalizados" style="display: none;">
+            <div class="custom-inputs-row">
+              <div class="custom-input-group">
+                <label for="custom-focus-minutes" class="custom-label">Enfoque (min)</label>
+                <input type="number" id="custom-focus-minutes" class="form-input custom-input" min="1" max="180"
+                  value="30">
+              </div>
+              <div class="custom-input-group">
+                <label for="custom-break-minutes" class="custom-label">Descanso (min)</label>
+                <input type="number" id="custom-break-minutes" class="form-input custom-input" min="1" max="60"
+                  value="5">
+              </div>
+            </div>
+          </div>
+
+          <!-- Campo de Materia para la sesión del temporizador -->
+          <div class="timer-topic-wrapper">
+            <label for="timer-topic-input" class="sr-only">Materia de estudio para este temporizador</label>
+            <div class="timer-topic-field">
+              <span class="material-symbols-rounded timer-topic-icon" aria-hidden="true">menu_book</span>
+              <input type="text" id="timer-topic-input" class="timer-topic-input"
+                placeholder="Materia (ej: Matemáticas, React...)" autocomplete="off">
+            </div>
+          </div>
+
+          <!-- Display de Tiempo con Anillo de Progreso SVG -->
+          <div class="timer-display-container" id="timer-display-container">
+            <div class="timer-progress-ring-wrapper">
+              <svg class="timer-progress-ring" viewBox="0 0 160 160" aria-hidden="true" role="presentation">
+                <circle class="timer-ring-bg" cx="80" cy="80" r="70" />
+                <circle class="timer-ring-bar" id="timer-ring-bar" cx="80" cy="80" r="70" />
+              </svg>
+              <div class="timer-display-content">
+                <div class="timer-phase-label" id="timer-phase-label">Enfoque</div>
+                <div class="timer-digits" id="timer-digits">25:00</div>
+                <div class="timer-cycle-indicator" id="timer-cycle-indicator">Ciclo 1 / 4</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controles del Temporizador -->
+          <div class="timer-actions">
+            <button type="button" class="btn-timer-icon" id="btn-timer-reset" title="Reiniciar tiempo"
+              aria-label="Reiniciar tiempo">
+              <span class="material-symbols-rounded" aria-hidden="true">restart_alt</span>
+            </button>
+
+            <button type="button" class="btn btn-primary btn-timer-main" id="btn-timer-toggle"
+              aria-label="Iniciar temporizador">
+              <span class="material-symbols-rounded btn-timer-main-icon" id="timer-main-icon"
+                aria-hidden="true">play_arrow</span>
+              <span id="timer-main-text">Iniciar</span>
+            </button>
+
+            <button type="button" class="btn-timer-icon" id="btn-timer-skip" title="Saltar a siguiente fase"
+              aria-label="Saltar a siguiente fase">
+              <span class="material-symbols-rounded" aria-hidden="true">skip_next</span>
+            </button>
+          </div>
+
+          <!-- Mensaje / Alerta de Finalización Visual -->
+          <div class="timer-finish-alert" id="timer-finish-alert" style="display: none;" role="alert">
+            <span class="material-symbols-rounded alert-icon" aria-hidden="true">check_circle</span>
+            <span id="timer-alert-text">¡Sesión completada y guardada en tu racha!</span>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <!-- Centro Despejado (Área Ambiental para Disfrutar el Fondo con Reloj Central Fliqlo Opcional) -->
+    <div class="ambient-center-space" id="ambient-center-space" aria-label="Espacio ambiental">
+      <!-- Reloj Central Flip Clock (Estilo Fliqlo) -->
+      <div class="flip-clock-wrapper" id="flip-clock-wrapper" style="display: none;"
+        aria-label="Reloj central de ambiente">
+        <div class="flip-clock" role="timer" aria-label="Hora actual">
+          <div class="flip-card-group" aria-label="Horas">
+            <div class="flip-card-tile">
+              <span class="flip-card-digit" id="flip-hours">12</span>
+              <div class="flip-card-line" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <span class="flip-clock-dots" aria-hidden="true">:</span>
+
+          <div class="flip-card-group" aria-label="Minutos">
+            <div class="flip-card-tile">
+              <span class="flip-card-digit" id="flip-minutes">00</span>
+              <div class="flip-card-line" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <span class="flip-clock-dots flip-dots-seconds" aria-hidden="true">:</span>
+
+          <div class="flip-card-group flip-seconds-group" aria-label="Segundos">
+            <div class="flip-card-tile flip-tile-sec">
+              <span class="flip-card-digit flip-digit-sec" id="flip-seconds">00</span>
+              <div class="flip-card-line" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Lateral Derecha (Formulario, Historial & Configuración) -->
+    <aside class="floating-column col-right" aria-label="Registro, historial y configuración">
+      <!-- 3. Tarjeta Registrar Sesión -->
+      <section class="floating-card card-form" id="card-form" aria-labelledby="title-form">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-title-icon icon-primary" aria-hidden="true">
+              <span class="material-symbols-rounded">edit_note</span>
+            </span>
+            <h2 class="card-title" id="title-form">Registrar Sesión</h2>
+          </div>
+          <div class="card-header-actions">
+            <span class="card-badge badge-primary">Fase 1 (MVP)</span>
+            <button type="button" class="btn-card-minimize" data-card="card-form" title="Minimizar Registrar Sesión"
+              aria-label="Minimizar Registrar Sesión">
+              <span class="material-symbols-rounded" aria-hidden="true">remove</span>
+            </button>
+          </div>
+        </div>
+
+        <form id="session-form" class="form-grid" novalidate>
+          <!-- Mensaje de error accesible en línea -->
+          <div id="form-error-msg" class="form-error-msg" role="alert" aria-live="polite" style="display: none;"></div>
+
+          <div class="form-group col-topic">
+            <label for="input-topic" class="form-label">
+              <span class="material-symbols-rounded label-icon" aria-hidden="true">menu_book</span>
+              Materia / Tema
+            </label>
+            <input type="text" id="input-topic" class="form-input" placeholder="Ej: Matemáticas, React, Algoritmos..."
+              required autocomplete="off">
+          </div>
+
+          <div class="form-row-duo">
+            <div class="form-group col-minutes">
+              <label for="input-minutes" class="form-label">
+                <span class="material-symbols-rounded label-icon" aria-hidden="true">schedule</span>
+                Minutos
+              </label>
+              <input type="number" id="input-minutes" class="form-input" placeholder="Ej: 45" min="1" max="1440"
+                required>
+            </div>
+
+            <div class="form-group col-date">
+              <label for="input-date" class="form-label">
+                <span class="material-symbols-rounded label-icon" aria-hidden="true">event</span>
+                Fecha local
+              </label>
+              <input type="date" id="input-date" class="form-input" required>
+            </div>
+          </div>
+
+          <div class="form-group col-submit">
+            <button type="submit" class="btn btn-primary" id="btn-save-session">
+              <span class="material-symbols-rounded" aria-hidden="true">save</span>
+              <span>Guardar Sesión</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- 4. Tarjeta Historial de Sesiones -->
+      <section class="floating-card card-history" id="card-history" aria-labelledby="title-history">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-title-icon icon-secondary" aria-hidden="true">
+              <span class="material-symbols-rounded">history_edu</span>
+            </span>
+            <h2 class="card-title" id="title-history">Historial de Sesiones</h2>
+          </div>
+          <div class="card-header-actions">
+            <span class="card-badge badge-secondary" id="history-count-badge" aria-live="polite">0 registros</span>
+            <button type="button" class="btn-card-minimize" data-card="card-history"
+              title="Minimizar Historial de Sesiones" aria-label="Minimizar Historial de Sesiones">
+              <span class="material-symbols-rounded" aria-hidden="true">remove</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="history-list-wrapper">
+          <ul class="history-list" id="history-list" aria-label="Lista de sesiones de estudio">
+            <!-- Renderizado dinámico desde app.js -->
+          </ul>
+          <div class="history-empty" id="history-empty" style="display: none;">
+            <div class="history-empty-icon" aria-hidden="true">
+              <span class="material-symbols-rounded">auto_stories</span>
+            </div>
+            <p>No tienes sesiones registradas aún.<br>Añade tu primera sesión en el formulario superior.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Tarjeta: Configuración -->
+      <section class="floating-card card-settings" id="card-settings" aria-labelledby="title-settings">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-title-icon icon-primary" aria-hidden="true">
+              <span class="material-symbols-rounded">settings</span>
+            </span>
+            <h2 class="card-title" id="title-settings">Configuración</h2>
+          </div>
+          <div class="card-header-actions">
+            <button type="button" class="btn-card-minimize" data-card="card-settings" title="Minimizar Configuración"
+              aria-label="Minimizar Configuración">
+              <span class="material-symbols-rounded" aria-hidden="true">remove</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="settings-body">
+          <!-- Opción 1: Selector de Fondo Ambiental -->
+          <div class="settings-item">
+            <div class="settings-item-label-group">
+              <span class="material-symbols-rounded settings-item-icon" aria-hidden="true">wallpaper</span>
+              <div>
+                <label for="bg-select" class="settings-item-title">Tema</label>
+                <p class="settings-item-subtitle">Fondo y colores</p>
+              </div>
+            </div>
+            <div class="settings-select-wrapper">
+              <select id="bg-select" class="bg-select" aria-label="Cambiar fondo ambiental">
+                <option value="cafe">Café</option>
+                <option value="camping">Camping</option>
+                <option value="gato">Gato</option>
+                <option value="playa">Playa</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Opción 2: Reloj Central estilo Fliqlo -->
+          <div class="settings-item">
+            <div class="settings-item-label-group">
+              <span class="material-symbols-rounded settings-item-icon"
+                aria-hidden="true">nest_clock_farsight_analog</span>
+              <div>
+                <span class="settings-item-title" id="lbl-clock">Reloj</span>
+                <p class="settings-item-subtitle">Mostrar la hora</p>
+              </div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="switch-clock" role="switch" aria-labelledby="lbl-clock" aria-checked="false">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <!-- Opción 3: Recordatorio de Agua -->
+          <div class="settings-item">
+            <div class="settings-item-label-group">
+              <span class="material-symbols-rounded settings-item-icon" aria-hidden="true">water_drop</span>
+              <div>
+                <span class="settings-item-title" id="lbl-water">Hidratación</span>
+                <p class="settings-item-subtitle">Recordatorio para tomar agua</p>
+              </div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="switch-water" role="switch" aria-labelledby="lbl-water" aria-checked="false">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <!-- Opción 4: Placeholder 1 -->
+          <div class="settings-item is-placeholder">
+            <div class="settings-item-label-group">
+              <span class="material-symbols-rounded settings-item-icon" aria-hidden="true">auto_awesome</span>
+              <div>
+                <span class="settings-item-title" id="lbl-ph1">Próximamente</span>
+                <p class="settings-item-subtitle">Opción en desarrollo</p>
+              </div>
+            </div>
+            <label class="toggle-switch is-disabled">
+              <input type="checkbox" id="switch-placeholder-1" role="switch" aria-labelledby="lbl-ph1"
+                aria-checked="false" disabled>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <!-- Opción 5: Placeholder 2 -->
+          <div class="settings-item is-placeholder">
+            <div class="settings-item-label-group">
+              <span class="material-symbols-rounded settings-item-icon" aria-hidden="true">hourglass_top</span>
+              <div>
+                <span class="settings-item-title" id="lbl-ph2">Próximamente</span>
+                <p class="settings-item-subtitle">Opción en desarrollo</p>
+              </div>
+            </div>
+            <label class="toggle-switch is-disabled">
+              <input type="checkbox" id="switch-placeholder-2" role="switch" aria-labelledby="lbl-ph2"
+                aria-checked="false" disabled>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <!-- Modal / Popup Flotante de Métricas y Actividad (Fase 4) -->
+  <div id="metrics-modal" class="metrics-modal-overlay" role="dialog" aria-modal="true"
+    aria-labelledby="metrics-modal-title" style="display: none;">
+    <div class="metrics-modal-backdrop" id="metrics-modal-backdrop" aria-hidden="true"></div>
+    <div class="floating-card metrics-modal-card" id="metrics-modal-card">
+      <div class="card-header metrics-modal-header">
+        <div class="card-title-group">
+          <span class="card-title-icon icon-secondary" aria-hidden="true">
+            <span class="material-symbols-rounded">analytics</span>
+          </span>
+          <div>
+            <h2 class="card-title" id="metrics-modal-title">Calendario de Actividad y Métricas</h2>
+            <p class="metrics-modal-subtitle">Estadísticas avanzadas, constancia y distribución de estudio</p>
+          </div>
+        </div>
+        <div class="card-header-actions">
+          <span class="card-badge badge-secondary">Fase 4 · Próximamente</span>
+          <button type="button" class="btn-modal-close" id="btn-close-metrics" title="Cerrar ventana de métricas"
+            aria-label="Cerrar ventana de métricas">
+            <span class="material-symbols-rounded" aria-hidden="true">close</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="metrics-modal-body">
+        <div class="metrics-preview-grid">
+          <div class="metrics-preview-card">
+            <div class="metrics-preview-icon icon-cyan" aria-hidden="true">
+              <span class="material-symbols-rounded">calendar_month</span>
+            </div>
+            <div class="metrics-preview-content">
+              <h3 class="metrics-preview-heading">Heatmap de Constancia Anual</h3>
+              <p class="metrics-preview-desc">Visualiza tus rachas y densidad de estudio diaria a lo largo de los meses.
+              </p>
+              <div class="metrics-mockup-heatmap" aria-hidden="true">
+                <div class="heatmap-mock-cells">
+                  <span class="hm-c lvl-1"></span><span class="hm-c lvl-3"></span><span class="hm-c lvl-0"></span><span
+                    class="hm-c lvl-2"></span>
+                  <span class="hm-c lvl-4"></span><span class="hm-c lvl-2"></span><span class="hm-c lvl-3"></span><span
+                    class="hm-c lvl-1"></span>
+                  <span class="hm-c lvl-0"></span><span class="hm-c lvl-4"></span><span class="hm-c lvl-3"></span><span
+                    class="hm-c lvl-2"></span>
+                  <span class="hm-c lvl-1"></span><span class="hm-c lvl-3"></span><span class="hm-c lvl-4"></span><span
+                    class="hm-c lvl-2"></span>
+                  <span class="hm-c lvl-2"></span><span class="hm-c lvl-0"></span><span class="hm-c lvl-3"></span><span
+                    class="hm-c lvl-4"></span>
+                  <span class="hm-c lvl-1"></span><span class="hm-c lvl-2"></span><span class="hm-c lvl-4"></span><span
+                    class="hm-c lvl-3"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="metrics-preview-card">
+            <div class="metrics-preview-icon icon-primary" aria-hidden="true">
+              <span class="material-symbols-rounded">pie_chart</span>
+            </div>
+            <div class="metrics-preview-content">
+              <h3 class="metrics-preview-heading">Distribución por Asignaturas</h3>
+              <p class="metrics-preview-desc">Desglose porcentual y gráfico de tiempo dedicado a cada materia
+                registrada.</p>
+              <div class="metrics-mockup-bars" aria-hidden="true">
+                <div class="mock-bar-line"><span class="m-label">Matemáticas</span>
+                  <div class="m-bar">
+                    <div class="m-fill f-1" style="width: 60%;"></div>
+                  </div><span class="m-val">60%</span>
+                </div>
+                <div class="mock-bar-line"><span class="m-label">Programación</span>
+                  <div class="m-bar">
+                    <div class="m-fill f-2" style="width: 30%;"></div>
+                  </div><span class="m-val">30%</span>
+                </div>
+                <div class="mock-bar-line"><span class="m-label">Otros</span>
+                  <div class="m-bar">
+                    <div class="m-fill f-3" style="width: 10%;"></div>
+                  </div><span class="m-val">10%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="metrics-preview-card">
+            <div class="metrics-preview-icon icon-accent" aria-hidden="true">
+              <span class="material-symbols-rounded">trending_up</span>
+            </div>
+            <div class="metrics-preview-content">
+              <h3 class="metrics-preview-heading">Récords y Rendimiento</h3>
+              <p class="metrics-preview-desc">Racha máxima alcanzada, media de minutos diarios y balance global de tu
+                estudio.</p>
+              <div class="metrics-stats-mini-summary">
+                <div class="summary-box"><span class="sb-label">Mejor Racha</span><span class="sb-val"
+                    id="metrics-modal-best-streak">--</span></div>
+                <div class="summary-box"><span class="sb-label">Total Sesiones</span><span class="sb-val"
+                    id="metrics-modal-total-sessions">--</span></div>
+                <div class="summary-box"><span class="sb-label">Horas Totales</span><span class="sb-val"
+                    id="metrics-modal-total-hours">--</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast de Recordatorio de Agua (No intrusivo) -->
+  <div id="water-reminder-toast" class="water-toast" role="alert" aria-live="polite" style="display: none;">
+    <div class="water-toast-content">
+      <span class="material-symbols-rounded water-toast-icon" aria-hidden="true">water_drop</span>
+      <div class="water-toast-text">
+        <strong>¡Momento de hidratarte!</strong>
+        <p>Toma un vaso de agua para mantener tu enfoque y energía.</p>
+      </div>
+    </div>
+    <button type="button" class="btn-water-toast-close" id="btn-close-water-toast"
+      aria-label="Cerrar recordatorio de agua">
+      <span class="material-symbols-rounded" aria-hidden="true">check</span>
+      <span>Listo</span>
+    </button>
+  </div>
+
+  <!-- Anunciador Dinámico Accesible para Lectores de Pantalla (WCAG 4.1.3) -->
+  <div id="a11y-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
